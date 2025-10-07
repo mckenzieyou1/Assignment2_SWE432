@@ -1,0 +1,164 @@
+<!-- dj.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DJ · Campus Radio</title>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/groupXX.css">
+</head>
+<body>
+  <div class="layout">
+    <header class="site-header">
+      <div class="brand">Campus Radio</div>
+      <nav aria-label="Primary">
+        <ul class="topnav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="producer.html">Producer</a></li>
+          <li><a href="dj.html" aria-current="page">DJ</a></li>
+          <li><a href="manager.html">Manager</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <aside class="sidebar">
+      <h2 class="sidebar-title">DJ</h2>
+      <ul class="menu">
+        <li><a href="#select">Choose playlist</a></li>
+        <li><a href="#queue">Current queue</a></li>
+        <li><a href="#quick">Quick add</a></li>
+        <li><a href="#notes">On-air notes</a></li>
+      </ul>
+    </aside>
+
+    <main class="content">
+      <section id="select" class="card">
+        <h2>Choose assigned playlist</h2>
+        <form action="#" method="get">
+          <fieldset>
+            <legend>Assignment</legend>
+
+            <label for="slot-date">Date</label>
+            <input id="slot-date" name="slot-date" type="date" required min="2025-01-01" max="2026-12-31">
+
+            <label for="slot-time">Time</label>
+            <input id="slot-time" name="slot-time" type="time" required step="60">
+
+            <label for="pselect">Playlist</label>
+            <select id="pselect" name="pselect" required>
+              <option value="" disabled selected>Select a playlist</option>
+              <option>Morning Indie — 2025-03-01</option>
+              <option>Late Night Electronic — 2025-03-02</option>
+              <option>Afternoon Mix — 2025-03-03</option>
+            </select>
+          </fieldset>
+
+          <fieldset>
+            <legend>Pre-flight</legend>
+            <label class="cluster">
+              <input type="checkbox" id="mic" name="mic"> Mic check
+            </label>
+            <label class="cluster">
+              <input type="checkbox" id="levels" name="levels"> Levels OK
+            </label>
+          </fieldset>
+
+          <div class="toolbar" role="group" aria-label="Load actions">
+            <button class="btn primary" type="submit">Load</button>
+            <button class="btn" type="reset">Clear</button>
+          </div>
+        </form>
+        <div class="sr-only" aria-live="polite" id="status">Status messages will appear here.</div>
+      </section>
+
+      <section id="queue" class="card">
+        <h2>Current on-air queue</h2>
+        <table class="table">
+          <caption>Now &amp; next</caption>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">Duration</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr aria-current="row">
+              <td>1</td>
+              <td>Vinyl Sunset</td>
+              <td>03:28</td>
+              <td class="actions">
+                <div class="toolbar">
+                  <button class="btn small" type="button">Move down</button>
+                  <button class="btn small danger" type="button">Remove</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Satellite Dreams</td>
+              <td>04:02</td>
+              <td class="actions">
+                <div class="toolbar">
+                  <button class="btn small" type="button">Move up</button>
+                  <button class="btn small" type="button">Move down</button>
+                  <button class="btn small danger" type="button">Remove</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Neon Harbor</td>
+              <td>03:41</td>
+              <td class="actions">
+                <div class="toolbar">
+                  <button class="btn small" type="button">Move up</button>
+                  <button class="btn small danger" type="button">Remove</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="quick" class="card">
+        <h2>Quick add</h2>
+        <form action="#" method="post">
+          <fieldset>
+            <legend>Add by title or ID</legend>
+            <label for="q">Song</label>
+            <input id="q" name="q" type="search" placeholder="e.g., Satellite Dreams or #4231" pattern=".{2,}" title="At least 2 characters" required>
+            <div class="toolbar" role="group" aria-label="Add actions">
+              <button class="btn" type="submit" name="pos" value="top">Add to top</button>
+              <button class="btn" type="submit" name="pos" value="bottom">Add to bottom</button>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+
+      <section id="notes" class="card">
+        <h2>On-air notes</h2>
+        <form action="#" method="post">
+          <fieldset>
+            <legend>Break script</legend>
+            <label for="notes-text">Notes (max 240 chars)</label>
+            <textarea id="notes-text" name="notes" rows="4" maxlength="240" placeholder="Sponsor mention, upcoming track, shout-outs…"></textarea>
+          </fieldset>
+          <div class="toolbar">
+            <button class="btn" type="reset">Clear</button>
+            <button class="btn primary" type="submit">Save notes</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© Campus Radio · SWE 432 · Assignment 2</p>
+    </footer>
+  </div>
+  <script src="assets/js/index.js" defer></script>
+  <script src="assets/js/dj.js" defer></script>
+</body>
+</html>

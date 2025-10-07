@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Campus Radio — Assignment 2</title>
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/groupXX.css">
+
+  <style>
+    .hero {
+      background: #23314d;       
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,.25);
+    }
+    .hero h1 { margin: 0 0 .25rem 0; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <header class="site-header">
+      <div class="brand">Campus Radio</div>
+      <nav aria-label="Primary">
+        <ul class="topnav">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="producer.html">Producer</a></li>
+          <li><a href="dj.html">DJ</a></li>
+          <li><a href="manager.html">Manager</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <aside class="sidebar" aria-label="Role navigation">
+      <nav>
+        <h2 class="sidebar-title">Roles</h2>
+        <ul class="menu">
+          <li><a href="producer.html">Producer</a></li>
+          <li><a href="dj.html">DJ</a></li>
+          <li><a href="manager.html">Manager</a></li>
+        </ul>
+      </nav>
+
+      <section class="card">
+        <h3>Docs</h3>
+        <ul>
+          <li><a href="docs/self-evaluation.md">Self-evaluation</a></li>
+          <li><a href="docs/README.md">Project README</a></li>
+        </ul>
+      </section>
+    </aside>
+
+    <main class="content">
+      <section class="hero">
+        <h1>Assignment 2 — Core Screens</h1>
+        <p>Baseline HTML (lists, tables, forms + validation) and CSS (external, internal and inline) using Flexbox and CSS Grid.</p>
+      </section>
+
+      <section class="card">
+        <h2>What’s included</h2>
+        <ul>
+          <li><strong>Producer:</strong> plan playlist by timeslot, choose DJ & genres, library → planned playlist.</li>
+          <li><strong>DJ:</strong> select assigned playlist and manage the on-air queue.</li>
+          <li><strong>Manager:</strong> view assignments, add a DJ, and see quick metrics.</li>
+        </ul>
+        <p>These pages are UI scaffolds for future JavaScript/server features.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© Campus Radio · SWE 432 · Assignment 2</p>
+    </footer>
+  </div>
+</body>
+</html>
