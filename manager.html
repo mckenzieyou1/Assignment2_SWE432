@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager - Campus Radio</title>
+    <link rel="stylesheet" href="manager.css">
+</head>
+<body>
+
+    <!-- Collapsable sidebar nav bar -->
+    <nav id="sidebar">
+        <button id="toggle-btn">☰</button>
+        <ul>
+            <li><a href="index.html"><span class="icon">🏠</span><span class="label">Home</span></a></li>
+            <li><a href="producer.html"><span class="icon">🎧</span><span class="label">About</span></a></li>
+            <li><a href="dj.html"><span class="icon">🎚️</span><span class="label">Contact</span></a></li>
+            <li><a href="manager.html"><span class="icon">💼</span><span class="label">Manager</span></a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header>
+            <h1>Manager Dashboard</h1>
+        </header>
+
+        <section id="now-playing">
+            <h2>Featured DJ Tonight</h2>
+            <div class="featured-dj">
+            <img alt="DJ Echo Avatar" class="dj-avatar">
+                <div class="dj-info">
+                    <h3>DJ Echo</h3>
+                    <p>Genre: Synthwave / Chillwave</p>
+                    <p>Live Now: 9:00 PM - 10:00 PM</p>
+                </div>
+            </div>
+            <p>Scheduled DJs:</p>
+            <ul class="upcoming-sets">
+                <li>10:00 PM - 11:00 PM: DJ Mirage — Chill EDM</li>
+                <li>11:00 PM - 12:00 AM: DJ Solstice — Deep House</li>
+                <li>12:00 AM - 1:00 AM: DJ Static — Ambient / Downtempo</li>
+            </ul>
+        </section>
+
+        <div class="content">
+
+            <!-- form -->
+            <div class="card">
+                <h2>Assign DJ to Timeslot</h2>
+                <form>
+                    <label for="day">Select Day:</label>
+                    <select id="day" name="day" required>
+                        <option value="">--Choose a Day--</option>
+                        <option>Monday</option>
+                        <option>Tuesday</option>
+                        <option>Wednesday</option>
+                        <option>Thursday</option>
+                        <option>Friday</option>
+                        <option>Saturday</option>
+                        <option>Sunday</option>
+                    </select>
+
+                    <label for="timeslot">Select Timeslot:</label>
+                    <select id="timeslot" name="timeslot" required>
+                        <option value="">--Choose a Timeslot--</option>
+                        <option>8:00 PM -9:00 PM</option>
+                        <option>9:00 PM - 10:00 PM</option>
+                        <option>10:00 PM - 11:00 PM</option>
+                        <option>11:00 PM -12:00 AM</option>
+                        <option>12:00 AM - 1:00 AM</option>
+                    </select>
+
+                    <label for="dj">Assign DJ:</label>
+                    <input type="text" id="dj" name="dj" placeholder="Enter DJ name" required>
+
+                    <button type="submit" class="btn primary">Assign</button>
+                </form>
+            </div>
+
+            <!-- tablee -->
+            <div class="card">
+                <h2>Weekly DJ Schedule</h2>
+                <table border="1">
+                    <!-- filler info for now -->
+                    <tr><th>Time Slot</th><th>DJ Assigned</th><th>Genre</th></tr>
+                    <tr><td>8:00 PM - 9:00 PM</td><td>DJ Luna</td><td>Lo-Fi Beats</td></tr>
+                    <tr><td>9:00 PM - 10:00 PM</td><td>DJ Echo</td><td>Synthwave</td></tr>
+                    <tr><td>10:00 PM - 11:00 PM</td><td>DJ Mirage</td><td>Chill EDM</td></tr>
+                    <tr><td>11:00 PM - 12:00 AM</td><td>DJ Solstice</td><td>Deep House</td></tr>
+                    <tr><td>12:00 AM - 1:00 AM</td><td>DJ Static</td><td>Ambient / Downtempo</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- list -->
+        <section class="card">
+            <h2>Producer vs DJ Song Report</h2>
+            <p>Comparing assigned vs. played songs for tonight:</p>
+            <ul>
+                <!-- filler info -->
+                <li><strong>Producer Assigned:</strong> "Moonlight Drive" — <em>DJ Luna</em> played "Moonlight Drive ✅"</li>
+                <li><strong>Producer Assigned:</strong> "Digital Mirage" — <em>DJ Mirage</em> replaced with "Echo Chamber ⚠️"</li>
+                <li><strong>Producer Assigned:</strong> "Solar Drift" — <em>DJ Solstice</em> played as assigned ✅</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <script>
+        //sidebar shrinking 
+        document.getElementById('toggle-btn').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+        });
+
+        //validation   
+        function validateForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            if (!name || !email) {
+                alert("Please fill out all required fields.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</body>
+</html>
