@@ -1,97 +1,179 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">    
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Producer Page</title>
-    <link rel="stylesheet" href="assets/css/producer.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Producer Page</title>
+  <link rel="stylesheet" href="assets/css/producer.css">
 </head>
 <body>
-   
-<div >
+  <div>
     <a href="index.html">Home</a>
-    <a href="dj.html">DJ </a>
-    <a href="producer.html">Producer </a>
-    <a href="manager.html">Manager </a>
+    <a href="dj.html">DJ</a>
+    <a href="producer.html">Producer</a>
+    <a href="manager.html">Manager</a>
   </div>
 
-<div>
-<table>
+  <table>
     <caption>Producer Dashboard</caption>
     <thead>
-        <tr>
-            <th>Select DJ:</th>
-            <th>Select Day:</th>
-            <th>Select Time:</th>
-        </tr>
+      <tr>
+        <th>Select DJ:</th>
+        <th>Select Day:</th>
+        <th>Select Time:</th>
+      </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>
-                <select>
-                    <option value="dj1">DJ 1</option>
-                    <option value="dj2">DJ 2</option>
-                    <option value="dj3">DJ 3</option>
-                </select>
-            </td>
-
-            <td>
-                <input type="date">
-            </td>
-            <td>
-                <input type="time">
-            </td>
-        </tr>
-        <tr>
-            <td>
-            
-            </td>
-        </tr>
+      <tr>
+        <td>
+          <select id="dj">
+            <option value="">Select DJ</option>
+            <option>DJ 1</option>
+            <option>DJ 2</option>
+            <option>DJ 3</option>
+          </select>
+        </td>
+        <td><input id="day" type="date"></td>
+        <td><input id="time" type="time"></td>
+      </tr>
     </tbody>
+  </table>
 
+  <div class="dashboard-container">
 
-</table>
-    </section>
-    <div class="dashboard-container">
-       <div class="dashboard-card">
-    <article style="border: 4px solid #ccc; padding: 16px; margin-top: 16px ;">
-        <h2>Playlist Management</h2>
-        <button>Add New Playlist</button>
-        <button>Edit Playlist</button>
-        <button>Delete  Playlist</button>
-        
-        <h3>Playlists:</h3>
-        <input type="text" placeholder="Search playlists">
-        
-        <ul>
-            <li>Morning Indie - 2025-03-01</li>
-            <li>Late Night Electronic - 2025-03-02</li>
-            <li>Afternoon Mix - 2025-03-03</li>
-        </ul>
-    </article>
-         </div>
-         <div class="dashboard-card">
-    <article style="border: 4px solid #ccc; padding: 16px; margin-top: 20px ; ">
-        <h2>Radio Station Assignments</h2>
-        <button>Assign New Show</button>
-        <button>Edit DJ Assignment</button>
-        <button>Delete DJ Assignment</button>
+    <!-- Playlist Card -->
+    <div class="dashboard-card">
+      <h2 id="playlist-title">Playlist Management</h2>
 
-        <h3>Assignments:</h3>
-        <ul>
-            <li>DJ 1 - Morning Indie - 2025-03-01 - 08:00 to 10:00</li>
-            <li>DJ 2 - Late Night Electronic - 2025-03-02 - 22:00 to 00:00</li>
-            <li>DJ 3 - Afternoon Mix - 2025-03-03 - 14:00 to 16:00</li>
-        </ul>
-    </article>
+      <button id="addPlaylist">Add New Playlist</button>
+      <button id="editPlaylist">Edit Playlist</button>
+      <button id="deletePlaylist">Delete Playlist</button>
+
+      <form id="playlistForm">
+        <label>Name: <input id="playlistName" type="text" required></label>
+        <label>Date: <input id="playlistDate" type="date" required></label>
+        <button type="submit">Save Playlist</button>
+      </form>
+
+      <ul id="playlistList">
+        <li>Morning Indie - 2025-03-01</li>
+        <li>Afternoon Mix - 2025-03-02</li>
+      </ul>
     </div>
 
+    <!-- Assignments Card -->
+    <div class="dashboard-card">
+      <h2>Radio Station Assignments</h2>
+
+
+      <button id="addAssign">Assign New Show</button>
+      <button id="editAssign">Edit Assignment</button>
+      <button id="deleteAssign">Delete Assignment</button>
+
+      <form id="assignForm">
+        <label>Start: <input id="startTime" type="time" required></label>
+        <label>End: <input id="endTime" type="time" required></label>
+        <button type="submit" onclick="alert('Assignment saved')">Save Assignment</button>
+      </form>
+
+      <ul id="assignList">
+        <li>DJ 1 - 2025-03-01 - 08:00 to 10:00</li>
+        <li>DJ 2 - 2025-03-02 - 22:00 to 00:00</li>
+      </ul>
     </div>
-    </main>
+  </div>
 
-</div>
+  <script>
+    //Object Manipulation
+    let producer = {
+      name: "McKenzie",
+      station: "GMU Radio",
+      role: "Producer"
+    };
+    producer.genre = "R&B"; //Add new property
 
+    const info = document.createElement("p");
+    info.textContent = "Producer: " + producer.name + " — " + producer.station + " (" + producer.genre + ")";
+    document.body.appendChild(info);
+
+    //Playlist Validation
+    document.getElementById("playlistForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("playlistName").value;
+      const date = document.getElementById("playlistDate").value;
+      if (!name || !date) {
+        alert("Fill out both fields!");
+        return;
+      }
+      const li = document.createElement("li");
+      li.textContent = name + " - " + date;
+      document.getElementById("playlistList").appendChild(li);
+      alert("Playlist added!");
+      e.target.reset();
+    });
+
+    // --- Assignment Validation ---
+    document.getElementById("assignForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const dj = document.getElementById("dj").value;
+      const day = document.getElementById("day").value;
+      const start = document.getElementById("startTime").value;
+      const end = document.getElementById("endTime").value;
+      if (!dj || !day || !start || !end) {
+        alert("Please fill out all fields!");
+        return;
+      }
+      if (end <= start) {
+        alert("End must be after start time!");
+        return;
+      }
+      const li = document.createElement("li");
+      li.textContent = dj + " - " + day + " - " + start + " to " + end;
+      document.getElementById("assignList").appendChild(li);
+      alert("Assignment added!");
+     
+    });
+
+ 
+    document.getElementById("playlistName").addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        alert("Enter pressed inside name field!");
+      }
+    });
+
+    //change color of playlist title when clicked
+    document.getElementById("playlist-title").addEventListener("click", function() {
+      this.style.color = (this.style.color === "pink") ? "black" : "pink";
+    });
+
+    //loop through assignments and log to console
+    const allAssignments = document.querySelectorAll("#assignList li");
+    for (let i = 0; i < allAssignments.length; i++) {
+      console.log("Assignment " + (i + 1) + ": " + allAssignments[i].textContent);
+    }
+
+    //wait 1.5 seconds then change title
+    setTimeout(function() {
+      document.title = "Producer Page";
+    }, 1500);
+  </script>
+
+  <!-- advanced concepts -->
+  <script type="module">
+    export class Producer {
+      constructor(name, station) {
+        this.name = name;
+        this.station = station;
+      }
+      introduce() {
+        console.log(this.name + " from " + this.station + " is producing");
+      }
+    }
+    Producer.prototype.role = "Producer";
+
+    const p = new Producer("McKenzie", "GMU Radio");
+    p.introduce();
+    console.log("Role:", p.role);
+  </script>
 </body>
 </html>
