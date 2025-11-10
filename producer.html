@@ -160,20 +160,12 @@
 
   <!-- advanced concepts -->
   <script type="module">
-    export class Producer {
-      constructor(name, station) {
-        this.name = name;
-        this.station = station;
-      }
-      introduce() {
-        console.log(this.name + " from " + this.station + " is producing");
-      }
-    }
-    Producer.prototype.role = "Producer";
+  import { Producer } from './producer.js';
 
-    const p = new Producer("McKenzie", "GMU Radio");
-    p.introduce();
-    console.log("Role:", p.role);
-  </script>
+  const p = new Producer('McKenzie', 'GMU RADIO');
+  p.intro();                    
+  console.log('Role:', p.role);  
+</script>
+
 </body>
 </html>
